@@ -14,7 +14,17 @@
 
 :root {
     --red: rgba(255, 0, 0, 1);
+    --white: rgba(255, 255, 255, 1);
+    --white_30: rgba(255, 255, 255, .3);
+    --black: rgba(0, 0, 0, 1);
+    --black_50: rgba(0, 0, 0, .5);
+    --gray: #787d85;
 }
+
+
+/* ========================================= */
+/* ================= Header ================ */
+/* ========================================= */
 
 .h-grid {
     display: grid;
@@ -28,6 +38,8 @@
     grid-template-rows: auto auto auto auto auto;
 }
 
+/*============== Logo ==============*/
+
 .h-logo-wrapper {
     grid-column: 1 / 2;
     grid-row: 1 / 2;
@@ -38,17 +50,91 @@
     margin: .25rem 0 0 3rem;
 }
 
+/*============== Navbar ==============*/
+
 .h-nav-ul {
     grid-column: 2 / 5;
     grid-row: 1 / 2; 
     border: 1px solid white;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-family: "PT Sans", Helvetica, Arial, Verdana, sans-serif;
+    font-weight: 700;
 }
+
+.h-nav-li {
+    padding: 1rem;
+}
+
+/*============== Icons ==============*/
 
 .h-media-wrapper {
     grid-column: 5 / 6;
     grid-row: 1 / 2; 
     border: 1px solid white;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: auto;
 }
+
+.icon {
+    width: 1.75rem;
+    height: 1.75rem;
+    line-height: 1.75rem;
+    border-radius: 50%;
+    text-align: center;
+    background: var(--white_30);
+}
+
+a[data-fbk], a[data-twr], a[data-ldi] {
+    position: relative;
+}
+
+a[data-fbk]::after{
+    content: attr(data-fbk);
+}
+
+a[data-twr]::after{
+    content: attr(data-twr);
+}
+
+a[data-ldi]::after{
+    content: attr(data-ldi);
+}
+
+a[data-fbk]::after, a[data-twr]::after, a[data-ldi]::after {
+    position: absolute;
+    top: 2.5rem;
+    right: -.75rem;
+    font-family: "PT Sans", Helvetica, Arial, Verdana, sans-serif;
+    font-size: .9rem;
+    font-weight: 600;
+    line-height: 1rem;
+    background: var(--black_50);
+    padding: .5rem;
+    border-radius: .25rem;
+    border: .5px solid var(--gray);
+    transform-origin: left;
+    transform: scale(0,1);
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 250ms ease-out,
+                opacity 250ms ease-out;
+
+}
+
+a[data-fbk]:hover::after, a[data-twr]:hover::after, a[data-ldi]:hover::after {
+    transform: scale(1, 1);
+    visibility: visible;
+    opacity: 1;
+    transition: transform 250ms ease-out,
+                visibility 250ms ease-out 125ms,
+                opacity 250ms ease-out 125ms;
+}
+
+/*========== Titles (h1, h2) ==========*/
 
 .h-title-wrapper {
     grid-column: 1 / 4;
@@ -84,6 +170,9 @@
     margin: 0.3rem 0 1rem 1.75rem;
 }
 
+
+/*========== Info 24/7/365 ========== */
+
 .h-info-wrapper {
     grid-column: 1 / 4;
     grid-row: 5 / 6; 
@@ -98,14 +187,45 @@
     margin: 0.3rem 2rem 1rem 2rem;
 }
 
+/*============= Contact =============*/
+
 .h-contact-container {
     grid-column: 4 / 6;
     grid-row: 4 / 6; 
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
     border: 1px solid white;
 }
 
 .h-contact-wrapper {
     text-align: center;
-    width: 80%;
-    border: 1px solid white;
+    width: 90%;
+    border: 2px solid white;
+    padding: 1rem;
+    margin: 1rem 0;
+    font-family: "PT Sans", Helvetica, Arial, Verdana, sans-serif;
+}
+
+.h-contact-phone {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.5rem;
+    line-height: 1rem;
+    font-weight: 500;
+    padding: 1rem 0 2rem 0;
+    transform-origin: center;
+    transform: scale(1.2, 1.2);
+
+}
+
+.h-contact-text1 {
+    font-family: "PT Sans", Helvetica, Arial, Verdana, sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.h-contact-text2 {
+    font-family: "PT Sans", Helvetica, Arial, Verdana, sans-serif;
+    font-weight: 500;
+    font-size: 1.5rem;
 }
