@@ -13,14 +13,23 @@
 }
 
 :root {
+    /* colors */
     --red: rgba(255, 0, 0, 1);
     --white: rgba(255, 255, 255, 1);
     --white_30: rgba(255, 255, 255, .3);
     --black: rgba(0, 0, 0, 1);
     --black_50: rgba(0, 0, 0, .5);
     --gray: #787d85;
-}
 
+    /* font size */
+    --h_title_h1: clamp(7rem, 10.5vw + 1.882rem, 9.25rem);          /* 778px < vw < 1120px*/
+    --h_subtitle_h2: clamp(6rem, 9.4vw + 1.450rem, 8rem);           /* 778px < vw < 1120px*/
+    --h_info_p: clamp(1.5rem, 2.3vw + .363rem, 2rem);               /* 778px < vw < 1120px*/
+    --h_contact_phone: clamp(1.25rem, 1.2vw + .681rem , 1.5rem);    /* 778px < vw < 1120px*/
+    --h_contact_text1: clamp(.75rem, 1.2vw + .181rem , 1rem);       /* 778px < vw < 1120px*/
+    --h_contact_text2: clamp(1.25rem, 1.2vw + .681rem , 1.5rem);    /* 778px < vw < 1120px*/
+
+}
 
 /* =========================================
                  HEADER
@@ -67,13 +76,24 @@
     padding: 1rem;
 }
 
+/*========= label & checkbox =========*/
+
+.nav-toggle{
+    display: none;
+}
+
+.nav-toggle-lbl {
+    display: none;
+}
+
+
 /*============== Icons ==============*/
 
 .h-media-wrapper {
     grid-column: 5 / 6;
     grid-row: 1 / 2; 
     display: flex;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     align-items: center;
     height: auto;
     /*border: 1px solid white;*/
@@ -82,6 +102,7 @@
 .icon {
     width: 1.75rem;
     height: 1.75rem;
+    margin: .15rem;
     line-height: 1.75rem;
     border-radius: 50%;
     text-align: center;
@@ -144,7 +165,7 @@ a[data-fbk]:hover::after, a[data-twr]:hover::after, a[data-ldi]:hover::after {
 
 .h-title-wrapper h1 {
     font-family: 'Oswald', sans-serif;
-    font-size: clamp(7rem, 10.5vw + 1.9rem, 9.25rem);
+    font-size: var(--h_title_h1);
     line-height: 8rem;
     font-weight: 900;
     letter-spacing: .20rem;
@@ -162,7 +183,7 @@ a[data-fbk]:hover::after, a[data-twr]:hover::after, a[data-ldi]:hover::after {
 
 .h-subtitle-wrapper h2 {
     font-family: 'Oswald', sans-serif;
-    font-size: clamp(6rem, 9.4vw + 1.5rem, 8rem);
+    font-size: var(--h_subtitle_h2);
     line-height: 8rem;
     font-weight: 300;
     transform-origin: left;
@@ -181,7 +202,7 @@ a[data-fbk]:hover::after, a[data-twr]:hover::after, a[data-ldi]:hover::after {
 
 .h-info-wrapper p {
     font-family: Roboto;
-    font-size: clamp(1.25rem, 2.3vw + 0.4rem, 2rem);
+    font-size: var(--h_info_p);
     line-height: 2.5rem;
     font-weight: 700;
     margin: 0.3rem 2rem 1rem 2rem;
@@ -209,7 +230,7 @@ a[data-fbk]:hover::after, a[data-twr]:hover::after, a[data-ldi]:hover::after {
 
 .h-contact-phone {
     font-family: 'Oswald', sans-serif;
-    font-size: clamp(1.25rem, 1.8vw + .3rem , 1.5rem);
+    font-size: var(--h_contact_phone);
     line-height: 1rem;
     font-weight: 500;
     padding: 1rem 0 1.5rem 0;
@@ -221,14 +242,14 @@ a[data-fbk]:hover::after, a[data-twr]:hover::after, a[data-ldi]:hover::after {
 .h-contact-text1 {
     font-family: "PT Sans", Helvetica, Arial, Verdana, sans-serif;
     font-weight: 700;
-    font-size: clamp(.75rem, 1.2vw + .2rem , 1rem);
+    font-size: var(--h_contact_text1);
     line-height: 1.25rem;
 }
 
 .h-contact-text2 {
     font-family: "PT Sans", Helvetica, Arial, Verdana, sans-serif;
     font-weight: 500;
-    font-size: clamp(1.25rem, 1.8vw + .3rem , 1.5rem);
+    font-size: var(--h_contact_text2);
 }
 
 
@@ -249,9 +270,34 @@ a[data-fbk]:hover::after, a[data-twr]:hover::after, a[data-ldi]:hover::after {
 
 
 @media screen and (min-width: 778px) and (max-width: 990px) {
+    
+    .h-title-wrapper h1 {
+        color: var(--white);
+    }
+    
     .h-contact-wrapper {
         width: 100%;
         padding: 1rem 1rem;
+    }
+
+    .h-media-wrapper {
+        grid-column: 4 / 5;
+
+    }
+
+}
+
+@media screen and (max-width: 990px) {
+
+    .h-nav-ul {
+        all: unset;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background: var(--white);
+        border: 2px solid red;
+
     }
 
 }
