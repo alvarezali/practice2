@@ -17,9 +17,13 @@
     --red: rgba(255, 0, 0, 1);
     --white: rgba(255, 255, 255, 1);
     --white_30: rgba(255, 255, 255, .3);
+    --white_40: rgba(255, 255, 255, .4);
+    --white_50: rgba(255, 255, 255, .5);
     --black: rgba(0, 0, 0, 1);
     --black_50: rgba(0, 0, 0, .5);
     --gray: #787d85;
+    --s1_main_title: #787d85;
+    --s1_card_title:#333539;
 
     /* font size */
     --h_title_h1: clamp(7rem, 10.5vw + 1.882rem, 9.25rem);          /* 778px < vw < 1120px*/
@@ -100,6 +104,7 @@
 }
 
 .icon {
+    position: relative;
     width: 1.75rem;
     height: 1.75rem;
     margin: .15rem;
@@ -109,8 +114,28 @@
     background: var(--white_30);
 }
 
+.icon::after {
+    content: '';
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    position: absolute;
+    border-radius: 50%;
+    transform: scale(0,0);
+    background: var(--white_50);
+    transition: transform 250ms ease-out,
+                background 250ms ease-out 250ms;
+}
+
+.icon:hover::after {
+    transform: scale(1,1);
+    background: var(--white_30);
+}
+
 a[data-fbk], a[data-twr], a[data-ldi] {
     position: relative;
+    border-radius: 50%;
 }
 
 a[data-fbk]::after{
@@ -151,8 +176,8 @@ a[data-fbk]:hover::after, a[data-twr]:hover::after, a[data-ldi]:hover::after {
     visibility: visible;
     opacity: 1;
     transition: transform 250ms ease-out,
-                visibility 150ms ease-out 125ms,
-                opacity 150ms ease-out 125ms;
+                visibility 125ms ease-out 125ms,
+                opacity 125ms ease-out 125ms;
 }
 
 /*========== Titles (h1, h2) ==========*/
@@ -252,12 +277,32 @@ a[data-fbk]:hover::after, a[data-twr]:hover::after, a[data-ldi]:hover::after {
     font-size: var(--h_contact_text2);
 }
 
+/* =========================================
+                 Section1
+   ========================================= */
+
+.main-title, .card-content {
+    color: var(--s1_main_title);
+}
+
+.main-content, .card-title {
+    color: var(--s1_card_title);
+}
+
+.main-title, .card-content  {
+    font-family: "PT Sans", Helvetica, Arial, Verdana, sans-serif;
+}
+
+.main-content, .card-title{
+    font-family: "Lato", Helvetica, Arial, Verdana, sans-serif;;
+}
+
 
 /* =========================================
                  MEDIA QUERIES 
    ========================================= */
 
-   @media screen and (min-width: 990px) and (max-width: 1120px) {
+@media screen and (min-width: 990px) and (max-width: 1120px) {
     .h-nav-ul {
         grid-column: 1 / 5;
     }
