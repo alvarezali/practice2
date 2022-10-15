@@ -84,7 +84,52 @@
 
 .h-nav-li {
     padding: 1rem;
+    position: relative;
 }
+
+.services-ul, .help-ul {
+    position: absolute;
+    z-index: 1;
+    width: fit-content;
+    background: var(--white);
+    transform: scale(1,0);
+    transform-origin: top;
+    opacity: 0;
+    visibility: 0;
+    transition: transform 250ms ease-out,
+                opacity 50ms ease-out,
+                visibility 50ms ease-out;
+}
+
+.sub-li {
+    width: 11rem;
+    margin: .75rem .5rem;
+}
+
+.sub-a {
+    font-size: .9rem;
+    width: auto;
+    color: var(--black);
+}
+
+.li-services:hover .services-ul {
+    transform: scale(1,1);
+    opacity: 1;
+    visibility: 1;
+    transition: transform 250ms ease-out,
+    opacity 250ms ease-out 200ms,
+    visibility 250ms ease-out 200ms;
+}
+
+.li-help:hover .help-ul {
+    transform: scale(1,1);
+    opacity: 1;
+    visibility: 1;
+    transition: transform 250ms ease-out,
+    opacity 250ms ease-out 200ms,
+    visibility 250ms ease-out 200ms;
+}
+
 
 /*========= label & checkbox =========*/
 
