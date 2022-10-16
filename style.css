@@ -142,7 +142,7 @@
 }
 
 
-/*============== Icons ==============*/
+/*============== Media Icons ==============*/
 
 .h-media-wrapper {
     grid-column: 5 / 6;
@@ -480,10 +480,8 @@ a[data-fbk]:hover::after, a[data-twr]:hover::after, a[data-ldi]:hover::after {
 
 @media screen and (min-width: 778px) and (max-width: 990px) {
     
-    .h-title-wrapper h1 {
-        color: var(--white);
-    }
-    
+/*============= Header ============= */    
+
     .h-contact-wrapper {
         width: 100%;
         padding: 1rem 1rem;
@@ -491,9 +489,10 @@ a[data-fbk]:hover::after, a[data-twr]:hover::after, a[data-ldi]:hover::after {
 
     .h-media-wrapper {
         grid-column: 4 / 5;
-
+        justify-content: flex-end;
     }
 
+/*============= Section1 ============= */  
     .main-wrapper {
         width: 70%;
     }
@@ -503,6 +502,7 @@ a[data-fbk]:hover::after, a[data-twr]:hover::after, a[data-ldi]:hover::after {
 
 @media screen and (max-width: 990px) {
 
+/*============= Header ============= */  
     .h-nav-ul {
         all: unset;
         position: fixed;
@@ -518,7 +518,53 @@ a[data-fbk]:hover::after, a[data-twr]:hover::after, a[data-ldi]:hover::after {
 }
 
 @media screen and (max-width: 778px) {
+/*============= Header ============= */  
+.h-media-wrapper {
+    grid-column: 4 / 5;
+    justify-content: flex-end;
+    align-items: center;
+}
 
+.h-title-wrapper {
+    grid-column: 1 / 6;
+    display: flex;
+    justify-content: center;
+}
+
+.h-title-wrapper h1 {
+    margin: 0 0 1rem 0;
+}
+
+.h-subtitle-wrapper {
+    grid-column: 1 / 5;
+    display: flex;
+    justify-content: center;
+}
+
+.h-subtitle-wrapper h2 {
+    margin: 0 0 1rem 0;
+    display: inline-block;
+}
+
+.h-info-wrapper {
+    display: none;
+}
+
+.h-contact-container {
+    grid-column: 2 / 5;
+    grid-row: 5 / 6; 
+    justify-content: center;
+    align-items: center;
+}
+
+.h-contact-wrapper {
+    text-align: center;
+    border: 2px solid white;
+    padding: 1rem 2rem;
+    font-family: "PT Sans", Helvetica, Arial, Verdana, sans-serif;
+}
+
+/*============= Section1 ============= */  
     .main-wrapper {
         width: 85%;
     }
