@@ -30,13 +30,24 @@
     --btn_red_50: rgba(255, 103, 91, .50);
 
     /* font size */
-    --h_title_h1: clamp(7rem, 10.5vw + 1.882rem, 9.25rem);          /* 778px < vw < 1120px*/
-    --h_subtitle_h2: clamp(6rem, 9.4vw + 1.450rem, 8rem);           /* 778px < vw < 1120px*/
-    --h_info_p: clamp(1.5rem, 2.3vw + .363rem, 2rem);               /* 778px < vw < 1120px*/
-    --h_contact_phone: clamp(1.25rem, 1.2vw + .681rem , 1.5rem);    /* 778px < vw < 1120px*/
-    --h_contact_text1: clamp(.75rem, 1.2vw + .181rem , 1rem);       /* 778px < vw < 1120px*/
-    --h_contact_text2: clamp(1.25rem, 1.2vw + .681rem , 1.5rem);    /* 778px < vw < 1120px*/
 
+    /* 778px < vw < 1120px */
+
+    --h_title_h1: clamp(7rem, 10.5vw + 1.882rem, 9.25rem);       
+    --h_subtitle_h2: clamp(6rem, 9.4vw + 1.450rem, 8rem);        
+    --h_info_p: clamp(1.5rem, 2.3vw + .363rem, 2rem);            
+    --h_contact_phone: clamp(1.25rem, 1.2vw + .681rem , 1.5rem); 
+    --h_contact_text1: clamp(.75rem, 1.2vw + .181rem , 1rem);    
+    --h_contact_text2: clamp(1.25rem, 1.2vw + .681rem , 1.5rem); 
+
+    /* 300 < vw < 778px */
+
+    --h_title_h1_778: clamp(4rem, 10vw + 2.117rem, 7rem);       
+    --h_subtitle_h2_778: clamp(3rem, 10vw + 1.117rem, 6rem);              
+    --h_contact_width_778: clamp(15rem, 16.7vw + 11.862rem , 20rem); 
+  
+    /* 300 < vw < 1120px */
+    --h_title_lh: clamp(4rem, 7.8vw + 2.537, 8rem);
 }
 
 /* =========================================
@@ -236,13 +247,13 @@ a[data-fbk]:hover::after, a[data-twr]:hover::after, a[data-ldi]:hover::after {
 .h-title-wrapper {
     grid-column: 1 / 4;
     grid-row: 2 / 4; 
-    /*border: 1px solid white;*/
+    /*border: 1px solid yellow;*/
 }
 
 .h-title-wrapper h1 {
     font-family: 'Oswald', sans-serif;
     font-size: var(--h_title_h1);
-    line-height: 8rem;
+    line-height: var(--h_title_lh);
     font-weight: 900;
     letter-spacing: .20rem;
     color: var(--red);
@@ -254,13 +265,13 @@ a[data-fbk]:hover::after, a[data-twr]:hover::after, a[data-ldi]:hover::after {
 .h-subtitle-wrapper {
     grid-column: 1 / 4;
     grid-row: 4 / 5; 
-    /*border: 1px solid white;*/
+    /*border: 1px solid yellow;*/
 }
 
 .h-subtitle-wrapper h2 {
     font-family: 'Oswald', sans-serif;
     font-size: var(--h_subtitle_h2);
-    line-height: 8rem;
+    line-height: var(--h_title_lh);
     font-weight: 300;
     transform-origin: left;
     transform: scale(1.2, 1.2);
@@ -292,7 +303,7 @@ a[data-fbk]:hover::after, a[data-twr]:hover::after, a[data-ldi]:hover::after {
     display: flex;
     justify-content: flex-start;
     align-items: flex-end;
-    /*border: 1px solid white;*/
+    /*border: 1px solid yellow;*/
 }
 
 .h-contact-wrapper {
@@ -467,6 +478,7 @@ a[data-fbk]:hover::after, a[data-twr]:hover::after, a[data-ldi]:hover::after {
    ========================================= */
 
 @media screen and (min-width: 990px) and (max-width: 1120px) {
+    /*============= Header ============= */  
     .h-nav-ul {
         grid-column: 1 / 5;
     }
@@ -477,27 +489,17 @@ a[data-fbk]:hover::after, a[data-twr]:hover::after, a[data-ldi]:hover::after {
 
 }
 
-
 @media screen and (min-width: 778px) and (max-width: 990px) {
     
 /*============= Header ============= */    
-
-    .h-contact-wrapper {
-        width: 100%;
-        padding: 1rem 1rem;
-    }
-
     .h-media-wrapper {
-        grid-column: 4 / 5;
-        justify-content: flex-end;
+        justify-content: flex-start;
     }
 
 /*============= Section1 ============= */  
     .main-wrapper {
         width: 70%;
     }
-
-
 }
 
 @media screen and (max-width: 990px) {
@@ -513,37 +515,52 @@ a[data-fbk]:hover::after, a[data-twr]:hover::after, a[data-ldi]:hover::after {
         background: var(--white);
         border: 2px solid red;
         display: none;
+    }
 
+    .h-media-wrapper {
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-start;
+    }
+
+    a[data-fbk]::after, a[data-twr]::after, a[data-ldi]::after {
+        top: 0;
+        right: 2rem;
     }
 }
 
 @media screen and (max-width: 778px) {
 /*============= Header ============= */  
+
+.h-logo-wrapper {
+    grid-column: 3 / 4;
+}
+
 .h-media-wrapper {
     grid-column: 4 / 5;
-    justify-content: flex-end;
-    align-items: center;
+    align-items: flex-end;
 }
 
 .h-title-wrapper {
     grid-column: 1 / 6;
-    display: flex;
-    justify-content: center;
 }
 
 .h-title-wrapper h1 {
+    font-size: var(--h_title_h1_778);
+    transform-origin: center;
+    text-align: center;
     margin: 0 0 1rem 0;
 }
 
 .h-subtitle-wrapper {
-    grid-column: 1 / 5;
-    display: flex;
-    justify-content: center;
+    grid-column: 1 / 6;
 }
 
 .h-subtitle-wrapper h2 {
+    font-size: var(--h_subtitle_h2_778);
+    transform-origin: center;
+    text-align: center;
     margin: 0 0 1rem 0;
-    display: inline-block;
 }
 
 .h-info-wrapper {
@@ -551,7 +568,7 @@ a[data-fbk]:hover::after, a[data-twr]:hover::after, a[data-ldi]:hover::after {
 }
 
 .h-contact-container {
-    grid-column: 2 / 5;
+    grid-column: 1 / 6;
     grid-row: 5 / 6; 
     justify-content: center;
     align-items: center;
@@ -560,8 +577,8 @@ a[data-fbk]:hover::after, a[data-twr]:hover::after, a[data-ldi]:hover::after {
 .h-contact-wrapper {
     text-align: center;
     border: 2px solid white;
+    width: var(--h_contact_width_778);
     padding: 1rem 2rem;
-    font-family: "PT Sans", Helvetica, Arial, Verdana, sans-serif;
 }
 
 /*============= Section1 ============= */  
