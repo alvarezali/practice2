@@ -22,6 +22,10 @@
     --black: rgba(0, 0, 0, 1);
     --black_50: rgba(0, 0, 0, .5);
     --gray: #787d85;
+    --gray_100:rgba(120,125,133,1);
+    --gray_50:rgba(120,125,133,.5);
+    --gray_30:rgba(120,125,133,.3);
+    --gray_20:rgba(120,125,133,.2);
     --s1_main_title: #787d85;
     --s1_card_title:#333539;
     --btn_red_100: rgba(255, 103, 91, 1);
@@ -45,7 +49,10 @@
     --h_title_h1_778: clamp(4rem, 10vw + 2.117rem, 7rem);       
     --h_subtitle_h2_778: clamp(3rem, 10vw + 1.117rem, 6rem);              
     --h_contact_width_778: clamp(15rem, 16.7vw + 11.862rem , 20rem); 
-  
+    --s1_main_title_778: clamp(2.5rem, 1.7vw + 2.186rem ,3rem);
+    --s1_main_content_778: clapm(1rem, 0.5vw + 0.906 , 1.15rem);
+
+
     /* 300 < vw < 1120px */
     --h_title_lh: clamp(4rem, 7.8vw + 2.537, 8rem);
 }
@@ -71,13 +78,15 @@
 .h-logo-wrapper {
     grid-column: 1 / 2;
     grid-row: 1 / 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     /*border: 1px solid white;*/
 }
 
 .h-logo-wrapper img {
     width: 7rem;
     height: 7rem;
-    margin: .25rem 0 0 3rem;
 }
 
 /*============== Navbar ==============*/
@@ -399,6 +408,10 @@ a[data-fbk]:hover::after, a[data-twr]:hover::after, a[data-ldi]:hover::after {
     font-size: 3rem;
 }
 
+.main-content {
+    font-size: 1.15rem;
+}
+
 .card1-logo-wrapper{
     width: 100%;
     text-align: center;
@@ -510,23 +523,158 @@ a[data-fbk]:hover::after, a[data-twr]:hover::after, a[data-ldi]:hover::after {
         position: fixed;
         z-index: 1;
         top: 0;
-        right: 0;
+        right: -13rem;
         bottom: 0;
+        width: auto;
+        padding-top: 4rem;
+        font-family: "PT Sans", Helvetica, Arial, Verdana, sans-serif;
+        color: var(--black);
         background: var(--white);
-        border: 2px solid red;
-        display: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        transition: right 250ms ease-out;
     }
 
-    .h-media-wrapper {
+    .h-nav-li {
+        all: unset;
+        display: block;
+        margin: 1rem 0 0 0;
+        border-bottom: 1px solid var(--gray_50);
+    }
+
+    .h-nav-a {
+        margin: 0 0 0 .5rem;
+        color: var(--black);
+    }
+
+    .services-ul, .help-ul {
+        all: unset;
+        display: block;
+        overflow: hidden;
+        height: 0;
+        background: var(--gray_30);
+        transition: height 250ms ease-out;
+    }
+
+    .sub-li {
+        padding: 0 0 0 1rem;
+    }
+
+    .li-services:hover .services-ul {
+        height: 7rem;
+        transition: height 250ms ease-out;
+    }
+    
+    .li-help:hover .help-ul {
+        height: 9rem;
+        transition: height 250ms ease-out;
+    }
+
+    .nav-toggle:checked ~ .h-nav-ul{
+        right: 0;
+    }
+
+    .nav-toggle:checked ~ .nav-toggle-lbl{
+        top: 0;
+        right: 0;
+        transform: rotate(90deg);
+        transition: right 300ms ease-out,
+                    transform 300ms ease-out;
+    }
+
+    .nav-toggle:checked ~ .nav-toggle-lbl > .lbl-burger {
+        border-radius: 0;
+        transform: rotate(45deg);
+        background: var(--red);
+        transition: transform 250ms ease-out;
+    }
+
+    .nav-toggle:checked ~ .nav-toggle-lbl > .lbl-burger::before {
+        top: 0;
+        border-radius: 0;
+        transform: rotate(-90deg);
+        background: var(--red);
+        transition: transform 250ms ease-out;
+    }
+
+    .nav-toggle:checked ~ .nav-toggle-lbl > .lbl-burger::after {
+        top: 0;
+        background: var(--red);
+    }
+
+    .nav-toggle-lbl {
+        position: fixed;
+        top: 2.25rem;
+        right: 1.75rem;
+        width: 2.5rem;
+        height: 3rem;
+        border-radius: .25rem;
+        display: flex;
         flex-direction: column;
-        justify-content: flex-end;
-        align-items: flex-start;
+        justify-content: center;
+        align-items: center;
+        background: var(--white_50);
+        z-index: 2;
+        transform: scale(1,1);
+        transition: right 150ms ease-out,
+                    transform 200ms ease-out;
+    }
+
+    .lbl-burger, .lbl-burger::before, .lbl-burger::after {
+        width: 1.75rem;
+        height: .25rem;
+        border-radius: 5rem;
+        background: var(--black);
+    }
+
+    .lbl-burger {
+        position: relative;
+        transition: transform 100ms ease-out;
+    }
+
+    .lbl-burger::before {
+        content: '';
+        position: absolute;
+        top: .6rem;
+        transition: transform 100ms ease-out;
+    }
+
+    .lbl-burger::after {
+        content: '';
+        position: absolute;
+        top: -.6rem;
+    }
+
+    .nav-toggle-lbl:hover {
+        cursor: pointer;
+        transform: scale(1,.9);
+        transition: transform 100ms ease-out;
+    }
+
+    .nav-toggle-lbl:hover .lbl-burger::after {
+        top: -0.5rem;
+        transition: top 100ms ease-out;
+    }
+
+    .nav-toggle-lbl:hover .lbl-burger::before {
+        top: 0.5rem;
+        transition: top 100ms ease-out;
+    }
+
+
+    .h-media-wrapper {
+        grid-column: 4 / 5;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-end;
     }
 
     a[data-fbk]::after, a[data-twr]::after, a[data-ldi]::after {
         top: 0;
-        right: 2rem;
+        right: 2.5rem;
     }
+
 }
 
 @media screen and (max-width: 778px) {
@@ -537,9 +685,16 @@ a[data-fbk]:hover::after, a[data-twr]:hover::after, a[data-ldi]:hover::after {
 }
 
 .h-media-wrapper {
-    grid-column: 4 / 5;
+    grid-column: 1 / 2;
     align-items: flex-end;
 }
+
+a[data-fbk]::after, a[data-twr]::after, a[data-ldi]::after {
+    top: 0;
+    left: 2.5rem;
+    right: auto;
+}
+
 
 .h-title-wrapper {
     grid-column: 1 / 6;
@@ -584,6 +739,14 @@ a[data-fbk]:hover::after, a[data-twr]:hover::after, a[data-ldi]:hover::after {
 /*============= Section1 ============= */  
     .main-wrapper {
         width: 85%;
+    }
+
+    .main-title {
+        font-size: var(--s1_main_title_778);
+    }
+
+    .main-content {
+        font-size: var(--s1_main_content_778);
     }
 
     .card1-container {
