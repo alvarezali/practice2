@@ -487,6 +487,102 @@ a[data-fbk]:hover::after, a[data-twr]:hover::after, a[data-ldi]:hover::after {
 }
 
 /* =========================================
+                 Filler
+   ========================================= */
+.filler-bottom-left {
+    margin: 0;
+    padding: 0;
+    height: 10rem;
+    background-image: linear-gradient(to bottom left, white 50%, black 50%);
+}
+
+.filler-top-right {
+    margin: 0;
+    padding: 0;
+    height: 10rem;
+    background-image: linear-gradient(to top right, white 50%, black 50%);
+}
+
+
+/* =========================================
+                 Section2
+   ========================================= */
+.title-wrapper {
+    position: relative;
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--black);
+}
+
+.title-wrapper::after {
+    position: absolute;
+    content: '';
+    bottom: -.2rem;
+    width: .5rem;
+    height: .5rem;
+    border-radius: 50%;
+    background: var(--red);
+    z-index: 1;
+}
+
+.s2-grid {
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto auto auto;
+    background: var(--black);
+}
+
+.s2-grid::before {
+    position: absolute;
+    content: '';
+    width: .1rem;
+    top: 0;
+    bottom: 0;
+    left: 49.95%;
+    background: var(--red);
+}
+
+.bubble-container {
+    grid-column: 1 / 3;
+    grid-row: 2 / 2;
+
+}
+
+.bubble-wrapper {
+    position: relative;
+    width: 44%;
+    margin: 0 0 0 3rem;
+    padding: 1.25rem 1rem;
+    background: var(--white);
+    border: 1px solid var(--white);
+}
+
+.bubble-wrapper::after {
+    content: '';
+	position: absolute;
+    width: 0; 
+    height: 0; 
+    top: 20%;
+    left: 100%;
+    border-top: .75rem solid transparent;
+    border-bottom: .75rem solid transparent;
+    border-left: .75rem solid var(--white);
+}
+
+.bubble-title, .bubble-content {
+    color: var(--black);
+}
+
+.bubble-a {
+    color: var(--red);
+}
+/* =========================================
                  MEDIA QUERIES 
    ========================================= */
 
@@ -607,9 +703,9 @@ a[data-fbk]:hover::after, a[data-twr]:hover::after, a[data-ldi]:hover::after {
         position: fixed;
         top: 2.25rem;
         right: 1.75rem;
-        width: 2.5rem;
-        height: 3rem;
-        border-radius: .25rem;
+        width: 2rem;
+        height: 2.25rem;
+        border-radius: .1rem;
         display: flex;
         flex-direction: column;
         justify-content: center;
