@@ -526,11 +526,15 @@ a[data-fbk]:hover::after, a[data-twr]:hover::after, a[data-ldi]:hover::after {
     position: absolute;
     content: '';
     bottom: -.2rem;
-    width: .5rem;
-    height: .5rem;
+    width: .65rem;
+    height: .65rem;
     border-radius: 50%;
     background: var(--red);
     z-index: 1;
+}
+
+.s2-title {
+    font-size: 3.25rem;
 }
 
 .s2-grid {
@@ -556,37 +560,88 @@ a[data-fbk]:hover::after, a[data-twr]:hover::after, a[data-ldi]:hover::after {
 .bubble-container {
     grid-column: 1 / 3;
     grid-row: 2 / 2;
+    position: relative;
+}
 
+.bubble-container::before, .bubble-container::after {
+    position: absolute;
+    content: '';
+    border-radius: 50%; 
+}
+
+.bubble-container::before{
+    top: 22%;
+    left: 49.3%;
+    width: 1rem;
+    height: 1rem;
+    background: var(--white);
+    z-index: 1;
+}
+
+.bubble-container::after{
+    top: 24%;
+    left: 49.65%;
+    width: .5rem;
+    height: .5rem;
+    background: var(--red);
+    z-index: 2;
 }
 
 .bubble-wrapper {
     position: relative;
     width: 44%;
     margin: 0 0 0 3rem;
-    padding: 1.25rem 1rem;
+    padding: 1rem 1rem 1.5rem 1rem;
     background: var(--white);
-    border: .14rem solid var(--red);
+    border: .1rem solid var(--red);
+    border-radius: .25rem;
+    text-align: right;
 }
 
-.bubble-wrapper::after {
+.bubble-arrow {
+    position: absolute;
+    width: 1.5rem;
+    height: 1.5rem;
+    top: 20%;
+    right: 0;
+    left: 100%;
+    background: var(--red);
+    clip-path: polygon(0% 0%, 0% 100%, 50% 50%);
+}
+
+.bubble-arrow::before {
     content: '';
-	position: absolute;
-    width: 3rem;
-    height: 3rem;
-    top: 0;
-    left: 92.19%;
+    position: absolute;
+    top: .2rem;
+    right: .2rem;
+    left: 0;
+    bottom: .15rem;
     background: var(--white);
-    border: .14rem solid red;
-    clip-path: polygon(100% 50%, 100% 0%, 50% 0%);
-    transform: rotate(45deg);
-    z-index: 1;
+    clip-path: polygon(0% 0%, 0% 100%, 50% 50%);
 }
 
-.bubble-title, .bubble-content {
+.bubble-title {
     color: var(--black);
+    font-size: 1.25rem;
+    font-family: "Lato", Helvetica, Arial, Verdana, sans-serif;
+    padding: .5rem 0 .5rem 0;
+    text-align: right;
+}
+
+.bubble-content, .bubble-a {
+    font-family: "PT Sans", Helvetica, Arial, Verdana, sans-serif;
+}
+
+.bubble-content {
+    font-size: .8rem;
+    line-height: 1.5rem;
+    padding: 0 0 1rem 8rem;
+    color: var(--s1_main_title);
 }
 
 .bubble-a {
+    font-size: .8rem;
+    font-weight: 600;
     color: var(--red);
 }
 /* =========================================
@@ -679,8 +734,8 @@ a[data-fbk]:hover::after, a[data-twr]:hover::after, a[data-ldi]:hover::after {
     }
 
     .nav-toggle:checked ~ .nav-toggle-lbl{
-        top: 0;
-        right: 0;
+        top: .15rem;
+        right: .5rem;
         transform: rotate(90deg);
         transition: right 300ms ease-out,
                     transform 300ms ease-out;
