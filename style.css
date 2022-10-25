@@ -32,6 +32,7 @@
     --btn_red_95: rgba(255, 103, 91, .95);
     --btn_red_90: rgba(255, 103, 91, .90);
     --btn_red_50: rgba(255, 103, 91, .50);
+    --orange: rgba(242, 145, 0, 1);
 
     /* font size */
 
@@ -50,8 +51,8 @@
     --h_subtitle_h2_778: clamp(3rem, 10vw + 1.117rem, 6rem);              
     --h_contact_width_778: clamp(15rem, 16.7vw + 11.862rem , 20rem); 
     --s1_main_title_778: clamp(2.5rem, 1.7vw + 2.186rem ,3rem);
-    --s1_main_content_778: clapm(1rem, 0.5vw + 0.906 , 1.15rem);
-
+    --s1_main_content_778: clapm(1rem, 0.5vw + 0.906rem , 1.15rem);
+    --s2-title: clamp(2rem, 4.2vw + 1.215rem, 3.25rem);
 
     /* 300 < vw < 1120px */
     --h_title_lh: clamp(4rem, 7.8vw + 2.537, 8rem);
@@ -489,6 +490,9 @@ a[data-fbk]:hover::after, a[data-twr]:hover::after, a[data-ldi]:hover::after {
 /* =========================================
                  Filler
    ========================================= */
+
+/*============= Top =============*/
+
 .filler-top, .filler-middle, .filler-bottom, .filler-middle-bottom {
     margin: 0;
     padding: 0;
@@ -510,6 +514,9 @@ a[data-fbk]:hover::after, a[data-twr]:hover::after, a[data-ldi]:hover::after {
     margin: 0 auto;
     clip-path: polygon(0% 0%, 0% 100%, 100% 100%);
 }
+
+
+/*============= Bottom =============*/
 
 .filler-middle-bottom {
     width: 95%;
@@ -533,7 +540,8 @@ a[data-fbk]:hover::after, a[data-twr]:hover::after, a[data-ldi]:hover::after {
 }
 
 .s2-title {
-    font-size: 3.25rem;
+    text-align: center;
+    font-size: var(--s2-title);
 }
 
 .grid-dot  {
@@ -591,6 +599,7 @@ a[data-fbk]:hover::after, a[data-twr]:hover::after, a[data-ldi]:hover::after {
     grid-column: 1 / 3;
     grid-row: 1 / 2;
     padding: .5rem 0 0 0;
+
 }
 
 .bubble2 {
@@ -643,12 +652,12 @@ a[data-fbk]:hover::after, a[data-twr]:hover::after, a[data-ldi]:hover::after {
 }
 
 .bubble-wrapper-left {
-    margin: 0 0 0 3%;
+    margin: 0 0 0 3.5%;
     text-align: right;
 }
 
 .bubble-wrapper-right{
-    margin: 0 0 0 53%;
+    margin: 0 0 0 52.5%;
 }
 
 .bubble-wrapper {
@@ -658,9 +667,57 @@ a[data-fbk]:hover::after, a[data-twr]:hover::after, a[data-ldi]:hover::after {
     height: auto;
     padding: 1rem 1rem 1.5rem 1rem;
     background: var(--white);
-    border: .1rem solid var(--red);
+    border: .1rem solid var(--orange);
     border-radius: .25rem;
-    
+}
+
+.bubble-icon1, .bubble-icon2, .bubble-icon3, .bubble-icon4 {
+    position: relative;
+}
+
+.bubble-icon1::after, .bubble-icon1::before, .bubble-icon2::after, .bubble-icon3::after, .bubble-icon4::after {
+    content: '';
+    position: absolute;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    background: var(--orange);
+}
+
+.bubble-icon1::before {
+    content: '';
+    top: 2.5rem;
+    left: -2rem;
+}
+
+.bubble-icon1::after {
+    content: '?';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    top: 3.25rem;
+    left: -1.25rem;
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--orange);
+    background: var(--white);
+}
+
+.bubble-icon2::after {
+    top: 4.5rem;
+    right: -2rem;
+}
+
+.bubble-icon3::after {
+    top: 4.5rem;
+    left: -2rem;
+}
+
+.bubble-icon4::after {
+    top: 4rem;
+    right: -2rem;
 }
 
 .bubble-arrow-left {
@@ -670,7 +727,7 @@ a[data-fbk]:hover::after, a[data-twr]:hover::after, a[data-ldi]:hover::after {
     top: 2.2rem;
     right: 0;
     left: 100%;
-    background: var(--red);
+    background: var(--orange);
     clip-path: polygon(0% 0%, 0% 100%, 50% 50%);
 }
 
@@ -692,7 +749,7 @@ a[data-fbk]:hover::after, a[data-twr]:hover::after, a[data-ldi]:hover::after {
     top: 2.2rem;
     right: 100%;
     left: -.75rem;
-    background: var(--red);
+    background: var(--orange);
     clip-path: polygon(0% 50%, 50% 0%, 50% 100%);
 }
 
@@ -741,6 +798,9 @@ a[data-fbk]:hover::after, a[data-twr]:hover::after, a[data-ldi]:hover::after {
     font-weight: 600;
     color: var(--red);
 }
+
+
+
 /* =========================================
                  MEDIA QUERIES 
    ========================================= */
@@ -1050,12 +1110,19 @@ a[data-fbk]::after, a[data-twr]::after, a[data-ldi]::after {
 }
 
 .content-left {
-    padding: 0 0 1rem 0;
     padding: 0 5rem 1rem 0;
 }
 
 .title-left {
     text-align: left;
+}
+
+.bubble-icon1::before, .bubble-icon3::after {
+    left: 95%;
+}
+
+.bubble-icon1::after {
+    left: 97%;
 }
 
 .bubble-dot::before, .bubble-dot::after {
@@ -1066,4 +1133,20 @@ a[data-fbk]::after, a[data-twr]::after, a[data-ldi]::after {
     display: none;
 }
 
+}
+
+@media screen and (max-width: 650px) {
+/*============= Section2 ============= */  
+
+.content-left {
+    padding: 0 0 1rem 0;
+}
+
+.content-right {
+    padding: 0 0 1rem 0;
+}
+
+.bubble-icon1::before, .bubble-icon1::after, .bubble-icon2::after, .bubble-icon3::after, .bubble-icon4::after  {
+    display: none;
+}
 }
