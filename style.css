@@ -544,6 +544,10 @@ a[data-fbk]:hover::after, a[data-twr]:hover::after, a[data-ldi]:hover::after {
     font-size: var(--s2-title);
 }
 
+.s2 {
+    height: auto;
+}
+
 .grid-dot  {
     display: flex;
     justify-content: center;
@@ -580,8 +584,7 @@ a[data-fbk]:hover::after, a[data-twr]:hover::after, a[data-ldi]:hover::after {
     height: auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto auto auto auto;
-    row-gap: 3rem;
+    grid-template-rows: auto auto auto auto;
     background: var(--black);
 }
 
@@ -620,7 +623,8 @@ a[data-fbk]:hover::after, a[data-twr]:hover::after, a[data-ldi]:hover::after {
 .bubble-container {
     position: relative;
     width: 100%;
-    height: 12.5rem;
+    height: auto;
+    margin: 0 0 3rem 0;
 }
 
 .bubble-dot {
@@ -675,49 +679,44 @@ a[data-fbk]:hover::after, a[data-twr]:hover::after, a[data-ldi]:hover::after {
     position: relative;
 }
 
-.bubble-icon1::after, .bubble-icon1::before, .bubble-icon2::after, .bubble-icon3::after, .bubble-icon4::after {
-    content: '';
+.bubble-icon1::after, .bubble-icon2::after, .bubble-icon3::after, .bubble-icon4::after {
     position: absolute;
     width: 4rem;
     height: 4rem;
     border-radius: 50%;
     background: var(--orange);
-}
-
-.bubble-icon1::before {
-    content: '';
-    top: 2.5rem;
-    left: -2rem;
-}
-
-.bubble-icon1::after {
-    content: '?';
+    border: 1px solid var(--orange);
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 2.5rem;
-    height: 2.5rem;
-    top: 3.25rem;
-    left: -1.25rem;
-    font-size: 2rem;
-    font-weight: 600;
-    color: var(--orange);
-    background: var(--white);
+}
+
+.bubble-icon1::after {
+    content: url("img/qmark_icon.png");
+    top: 2.5rem;
+    left: -2rem;
+    background: var(--orange);
 }
 
 .bubble-icon2::after {
+    content: url("img/case_icon.png");
     top: 4.5rem;
     right: -2rem;
+    background: var(--white);
 }
 
 .bubble-icon3::after {
+    content: url("img/people_icon.png");
     top: 4.5rem;
     left: -2rem;
+    background: var(--orange);
 }
 
 .bubble-icon4::after {
+    content: url("img/book_icon.png");
     top: 4rem;
     right: -2rem;
+    background: var(--white);
 }
 
 .bubble-arrow-left {
@@ -780,11 +779,11 @@ a[data-fbk]:hover::after, a[data-twr]:hover::after, a[data-ldi]:hover::after {
 }
 
 .content-left {
-    padding: 0 0 1rem 5rem;
+    padding: 0 0 1rem 3rem;
 }
 
 .content-right {
-    padding: 0 5rem 1rem 0;
+    padding: 0 3rem 1rem 0;
 }
 
 .bubble-content {
@@ -1110,19 +1109,38 @@ a[data-fbk]::after, a[data-twr]::after, a[data-ldi]::after {
 }
 
 .content-left {
-    padding: 0 5rem 1rem 0;
+    padding: 0 1rem 1rem 0;
 }
 
 .title-left {
     text-align: left;
 }
 
-.bubble-icon1::before, .bubble-icon3::after {
-    left: 95%;
+.bubble-icon1::after, .bubble-icon3::after {
+    all: unset;
+    position: absolute;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    background: var(--orange);
+    border: 1px solid var(--orange);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .bubble-icon1::after {
-    left: 97%;
+    content: url("img/qmark_icon.png");
+    top: 2.5rem;
+    right: -2rem;
+    background: var(--orange);
+}
+
+.bubble-icon3::after {
+    content: url("img/people_icon.png");
+    top: 4.5rem;
+    right: -2rem;
+    background: var(--orange);
 }
 
 .bubble-dot::before, .bubble-dot::after {
@@ -1138,6 +1156,10 @@ a[data-fbk]::after, a[data-twr]::after, a[data-ldi]::after {
 @media screen and (max-width: 650px) {
 /*============= Section2 ============= */  
 
+.bubble-container {
+    margin: 0 0 1rem 0;
+}
+
 .content-left {
     padding: 0 0 1rem 0;
 }
@@ -1149,4 +1171,5 @@ a[data-fbk]::after, a[data-twr]::after, a[data-ldi]::after {
 .bubble-icon1::before, .bubble-icon1::after, .bubble-icon2::after, .bubble-icon3::after, .bubble-icon4::after  {
     display: none;
 }
+
 }
