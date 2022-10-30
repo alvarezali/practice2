@@ -34,6 +34,9 @@
     --btn_red_50: rgba(255, 103, 91, .50);
     --orange: rgba(242, 145, 0, 1);
     --weird_red: rgba(255, 61, 58, 1);
+    --blue: rgba(41,128,185, 1);
+    --blue_neon: rgba(31, 81, 255, 1);
+    --blue_bright: rgba(0, 150, 255, 1);
 
     /* font size */
 
@@ -481,9 +484,15 @@ a[data-fbk]:hover::after, a[data-twr]:hover::after, a[data-ldi]:hover::after {
     height: 3rem;
     line-height: 3rem;
     text-align: center;
+    color: var(--white);
     background: var(--btn_red_90);
     font-size: .9rem;
     font-family: "PT Sans", Helvetica, Arial, Verdana, sans-serif;
+    transition: background 250ms ease-out;
+}
+
+.card-btn a {
+    color: var(--white);
 }
 
 .card-btn:hover {
@@ -906,6 +915,76 @@ a[data-fbk]:hover::after, a[data-twr]:hover::after, a[data-ldi]:hover::after {
     border-radius: 50%;
     background: var(--weird_red);
 }
+
+/* =========================================
+                 Footer
+   ========================================= */
+
+.footer {
+    width: 100%;
+    height: 10rem;
+    background: var(--black);
+}
+
+.fcard-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.fa-wrapper, .tw-wrapper, .lk-wrapper {
+    width: 9rem;
+    height: 3.5rem;
+    perspective: 62.5rem;
+    background: transparent;
+}
+
+.fa-inner, .tw-inner, .lk-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 250ms ease-out;
+    transform-style: preserve-3d;
+}
+
+.fa-wrapper:hover .fa-inner {
+    transform: rotateX(-180deg);
+}
+
+.tw-wrapper:hover .tw-inner {
+    transform: rotateX(-180deg);
+}
+
+.lk-wrapper:hover .lk-inner {
+    transform: rotateX(-180deg);
+}
+
+.fa-front, .fa-back, .tw-front, .tw-back, .lk-front, .lk-back {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border-radius: .15rem;
+    backface-visibility: hidden;
+}
+
+.fa-front, .tw-front, .lk-front {
+    background: var(--blue_neon);
+    color: var(--white);
+}
+
+.fa-back, .tw-back, .lk-back {
+    background: var(--blue_neon);
+    font-size: 1.25rem;
+    font-weight: 600;
+    font-family: "Lato", Helvetica, Arial, Verdana, sans-serif;
+    color: white;
+    transform: rotateX(180deg);
+}
+
 
 
 /* =========================================
